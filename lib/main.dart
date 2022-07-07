@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 import 'package:webrtc_tutorial/signaling.dart';
 
+const buttonMargin = 10.0;
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -44,12 +46,10 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     _localRenderer.initialize();
     _remoteRenderer.initialize();
-
     signaling.onAddRemoteStream = ((stream) {
       _remoteRenderer.srcObject = stream;
       setState(() {});
     });
-
     super.initState();
   }
 
@@ -68,9 +68,11 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Column(
         children: [
-          SizedBox(height: 8),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+          SizedBox(height: buttonMargin),
+          Wrap(
+            runSpacing: buttonMargin,
+            spacing: buttonMargin,
+            alignment: WrapAlignment.center,
             children: [
               ElevatedButton(
                 onPressed: () {
@@ -78,21 +80,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 child: Text("On camera & microphone"),
               ),
-              SizedBox(
-                width: 8,
-              ),
               ElevatedButton(
                 onPressed: () {
                   signaling.hangUp(_localRenderer);
                 },
                 child: Text("Hangup"),
               ),
-            ],
-          ),
-          SizedBox(height: 8),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
               ElevatedButton(
                 onPressed: () {
                   // Add roomId
@@ -102,9 +95,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   );
                 },
                 child: Text("Join room"),
-              ),
-              SizedBox(
-                width: 8,
               ),
               ElevatedButton(
                 onPressed: () async {
@@ -116,7 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ],
           ),
-          SizedBox(height: 8),
+          SizedBox(height: buttonMargin),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -143,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
           ),
-          SizedBox(height: 8)
+          SizedBox(height: buttonMargin)
         ],
       ),
     );
