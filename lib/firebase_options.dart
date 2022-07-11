@@ -23,15 +23,9 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -64,5 +58,25 @@ class DefaultFirebaseOptions {
     messagingSenderId: '597943970576',
     projectId: 'fe-webrtc-tutorial-5b76b',
     storageBucket: 'fe-webrtc-tutorial-5b76b.appspot.com',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyACX8vRCJ47uv8TF0n_NsgAE3HVoyMCR7M',
+    appId: '1:597943970576:ios:dab90444da3cfb3e279395',
+    messagingSenderId: '597943970576',
+    projectId: 'fe-webrtc-tutorial-5b76b',
+    storageBucket: 'fe-webrtc-tutorial-5b76b.appspot.com',
+    iosClientId: '597943970576-d6d1gakkpjmt8jjgcfpqbg1n1mn3sbp8.apps.googleusercontent.com',
+    iosBundleId: 'dev.flutterexplained.webrtcTutorial',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyACX8vRCJ47uv8TF0n_NsgAE3HVoyMCR7M',
+    appId: '1:597943970576:ios:dab90444da3cfb3e279395',
+    messagingSenderId: '597943970576',
+    projectId: 'fe-webrtc-tutorial-5b76b',
+    storageBucket: 'fe-webrtc-tutorial-5b76b.appspot.com',
+    iosClientId: '597943970576-d6d1gakkpjmt8jjgcfpqbg1n1mn3sbp8.apps.googleusercontent.com',
+    iosBundleId: 'dev.flutterexplained.webrtcTutorial',
   );
 }
